@@ -196,8 +196,6 @@ void display_time(int hour, int minute)
     display_hour(hour);
     display_minute(minute);
     display_ampm(hour);
-
-    std::cout << hour << ':' << minute;
 }
 
 //
@@ -212,6 +210,8 @@ void display_hour(int hour)
     else if (hour > 12) {
         hour = hour - 12;
     }
+
+    std::cout << hour;
 }
 
 
@@ -219,6 +219,14 @@ void display_minute(int minute)
 {
     // An output module that displays the given minute on the screen. Minutes are 
     // displayed with a leading zero when less than ten.
+    if (minute < 10) {
+        std::string min = std::to_string(minute);
+        min = "0" + min;
+        std::cout << ":" << min;
+    } else {
+        std::cout << ":" << minute;
+    }
+
 }
 
 
@@ -227,9 +235,9 @@ void display_ampm(int hour)
     // An output module that displays “a.m.” or “p.m.” on the screen given an hour 
     // in 24 - hour format.
     if (hour <= 11) {
-        // a.m.
+        std::cout << " a.m.";
     }
     else {
-        // p.m.
+        std::cout << " p.m.";
     }
 }
