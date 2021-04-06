@@ -78,6 +78,12 @@ void get_datetime(int& year, int& month, int& day, int& hour, int& minute)
 void compute_jdn(int year, int month, int day, int& jdn)
 {
     // A processing module that computes the JDN for the given date, as in Lab #3.
+    int a, b, c, d;
+    a = (14 - month) / 12;
+    b = (month - 3) + (12 * a);
+    c = 4800 + year - a;
+    d = (c / 4) - (c / 100) + (c / 400);
+    jdn = day + (((153 * b) + 2) / 5) + (365 * c) + d - 32045;
 }
 
 //
@@ -86,6 +92,9 @@ void compute_jdn(int year, int month, int day, int& jdn)
 void compute_dow(int year, int month, int day, int& dow)
 {
     // A processing module that computes the weekday number for the given date, as in Lab #4.
+    int jdn;
+    compute_jdn(year, month, day, jdn);
+    dow = (jdn + 1) % 7;
 }
 
 //
