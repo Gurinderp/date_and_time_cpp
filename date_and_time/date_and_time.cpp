@@ -75,8 +75,6 @@ void get_datetime(int& year, int& month, int& day, int& hour, int& minute)
     compute_dow(year, month, day, dow );
     get_month_name(month, month_name);
     get_weekday_name(dow, weekday_name);
-    display_date(year, month, day);
-    display_time(hour, minute);
     display_hour(hour);
     display_minute(minute);
     display_ampm(hour);
@@ -112,6 +110,42 @@ void compute_dow(int year, int month, int day, int& dow)
 void get_month_name(int month, std::string& month_name)
 {
     // A processing module that determines the month name corresponding to the given month number.
+    if (month == 1) {
+        month_name = "January";
+    }
+    else if (month == 2) {
+        month_name = "February";
+    }
+    else if (month == 3) {
+        month_name = "March";
+    }
+    else if (month == 4) {
+        month_name = "April";
+    }
+    else if (month == 5) {
+        month_name = "May";
+    }
+    else if (month == 6) {
+        month_name = "June";
+    }
+    else if (month == 7) {
+        month_name = "July";
+    }
+    else if (month == 8) {
+        month_name = "August";
+    }
+    else if (month == 9) {
+        month_name = "September";
+    }
+    else if (month == 10) {
+        month_name = "October";
+    }
+    else if (month == 11) {
+        month_name = "November";
+    }
+    else {
+        month_name = "December";
+    }
 }
 
 //
@@ -164,7 +198,7 @@ void display_hour(int hour)
 //
 void display_minute(int minute)
 {
-    // An output module that displays the given minute on the screen.Minutes are displayed with a leading zero when less than ten.
+    // An output module that displays the given minute on the screen. Minutes are displayed with a leading zero when less than ten.
 }
 
 //
