@@ -70,13 +70,6 @@ void get_datetime(int& year, int& month, int& day, int& hour, int& minute)
 // ** DISCARDED WHEN YOUR PROGRAM IS GRADED.                                **
 // ***************************************************************************
 
-/*
-    compute_jdn(year, month, day, jdn);
-    compute_dow(year, month, day, dow );
-    get_month_name(month, month_name);
-    get_weekday_name(dow, weekday_name);
-*/
-
 //
 // A processing module that computes the JDN for the given date.
 //
@@ -174,14 +167,25 @@ void get_weekday_name(int dow, std::string& weekday_name)
 
 }
 
-
+//
+// An output module that displays a date on the screen given the 
+// component year, month, and day numbers — e.g., Thursday, March 18, 2021.
+//
 void display_date(int year, int month, int day)
 {
-    // An output module that displays a date on the screen given the 
-    // component year, month, and day numbers — e.g., Thursday, March 18, 2021.
-    std::cout << month << '/' << day << '/' << year;
+    std::string month_name, weekday_name;
+    int dow;
+
+    compute_dow(year, month, day, dow);
+    get_month_name(month, month_name);
+    get_weekday_name(dow, weekday_name);
+
+    std::cout << weekday_name << ", "
+        << month_name << ' ' << day << ", " 
+        << year;
 }
 
+//
 // An output / controller module that displays a time on the screen in 12 - 
 // hour format given the component hour and minute numbers in 24 - hour format.
 // This is accomplished by calling upon the services of the display_hour, 
@@ -190,9 +194,9 @@ void display_date(int year, int month, int day)
 // (hour = 14, minute = 30) shows 2 : 30 p.m. (As with the previous module, this
 // module and those it calls would be better implemented as processing modules 
 // that produce strings.)
+//
 void display_time(int hour, int minute)
 {
-
     display_hour(hour);
     display_minute(minute);
     display_ampm(hour);
@@ -214,11 +218,12 @@ void display_hour(int hour)
     std::cout << hour;
 }
 
-
+//
+// An output module that displays the given minute on the screen. Minutes are
+// displayed with a leading zero when less than ten.
+//
 void display_minute(int minute)
 {
-    // An output module that displays the given minute on the screen. Minutes are 
-    // displayed with a leading zero when less than ten.
     if (minute < 10) {
         std::string min = std::to_string(minute);
         min = "0" + min;
@@ -229,11 +234,12 @@ void display_minute(int minute)
 
 }
 
-
+//
+// An output module that displays “a.m.” or “p.m.” on the screen given an hour 
+// in 24 - hour format.
+//
 void display_ampm(int hour)
 {
-    // An output module that displays “a.m.” or “p.m.” on the screen given an hour 
-    // in 24 - hour format.
     if (hour <= 11) {
         std::cout << " a.m.";
     }
