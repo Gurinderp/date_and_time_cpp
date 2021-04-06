@@ -30,15 +30,6 @@ int main()
         minute;  // current minute (0..59)
 
     get_datetime(year, month, day, hour, minute);
-    compute_jdn(year, month, day, jdn);
-    compute_dow(year, month, day, dow );
-    get_month_name(month, month_name);
-    get_weekday_name(dow, weekday_name);
-    display_date(year, month, day);
-    display_time(hour, minute);
-    display_hour(hour);
-    display_minute(minute);
-    display_ampm(hour);
 
     // Display current date
     std::cout << "Today is ";
@@ -72,6 +63,24 @@ void get_datetime(int& year, int& month, int& day, int& hour, int& minute)
     hour = tm_ptr->tm_hour;
     minute = tm_ptr->tm_min;
 }
+
+// ***************************************************************************
+// ** DO NOT CHANGE ANY LINES ABOVE THIS POINT, EXCEPT TO ADD YOUR NAME AND **
+// ** SECTION NUMBER ON LINES 2 AND 4. ALL CHANGES ABOVE THIS POINT WILL BE **
+// ** DISCARDED WHEN YOUR PROGRAM IS GRADED.                                **
+// ***************************************************************************
+
+/*
+    compute_jdn(year, month, day, jdn);
+    compute_dow(year, month, day, dow );
+    get_month_name(month, month_name);
+    get_weekday_name(dow, weekday_name);
+    display_date(year, month, day);
+    display_time(hour, minute);
+    display_hour(hour);
+    display_minute(minute);
+    display_ampm(hour);
+*/
 
 // Describe this module...
 //
