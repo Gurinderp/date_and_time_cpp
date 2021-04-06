@@ -75,16 +75,13 @@ void get_datetime(int& year, int& month, int& day, int& hour, int& minute)
     compute_dow(year, month, day, dow );
     get_month_name(month, month_name);
     get_weekday_name(dow, weekday_name);
-    display_hour(hour);
-    display_minute(minute);
-    display_ampm(hour);
 */
 
-// Describe this module...
+//
+// A processing module that computes the JDN for the given date.
 //
 void compute_jdn(int year, int month, int day, int& jdn)
 {
-    // A processing module that computes the JDN for the given date, as in Lab #3.
     int a, b, c, d;
     a = (14 - month) / 12;
     b = (month - 3) + (12 * a);
@@ -94,22 +91,21 @@ void compute_jdn(int year, int month, int day, int& jdn)
 }
 
 //
-// Describe this module...
+// A processing module that computes the weekday number for the given date
 //
 void compute_dow(int year, int month, int day, int& dow)
 {
-    // A processing module that computes the weekday number for the given date, as in Lab #4.
     int jdn;
     compute_jdn(year, month, day, jdn);
     dow = (jdn + 1) % 7;
 }
 
 //
-// Describe this module...
+// A processing module that determines the month name corresponding to the 
+// given month number.
 //
 void get_month_name(int month, std::string& month_name)
 {
-    // A processing module that determines the month name corresponding to the given month number.
     if (month == 1) {
         month_name = "January";
     }
@@ -149,62 +145,91 @@ void get_month_name(int month, std::string& month_name)
 }
 
 //
-// Describe this module...
+// A processing module that determines the weekday name corresponding 
+// to the given weekday number.
 //
 void get_weekday_name(int dow, std::string& weekday_name)
 {
-    // A processing module that determines the weekday name corresponding 
-    // to the given weekday number(where zero is "Sunday", 1 is "Monday", etc.).
+    if (dow == 0) {
+        weekday_name = "Sunday";
+    }
+    else if (dow == 1) {
+        weekday_name = "Monday";
+    }
+    else if (dow == 2) {
+        weekday_name = "Tuesday";
+    }
+    else if (dow == 3) {
+        weekday_name = "Wednesday";
+    }
+    else if (dow == 4) {
+        weekday_name = "Thursday";
+    }
+    else if (dow == 5) {
+        weekday_name = "Friday";
+    }
+    else {
+        weekday_name = "Saturday";
+    }
+
 }
 
-//
-// Describe this module...
-//
+
 void display_date(int year, int month, int day)
 {
-    // An input module that obtains the current date and time components from the system clock. 
-    // The year is a four-digit integer accurate for years since 1900, the month an integer from 1 to 12, 
-    // the day an integer from 1 to 31, the hour an integer from 0 to 23, and the minute an integer from 0 
-    // to 59. (Note: A full implementation of this module is provided in the datetime.cpp starter file; you are 
-    // not responsible for understanding the details of how this module works, as it depends on concepts 
-    // introduced in CISP 360.)
+    // An output module that displays a date on the screen given the 
+    // component year, month, and day numbers — e.g., Thursday, March 18, 2021.
     std::cout << month << '/' << day << '/' << year;
 }
 
-//
-// Describe this module...
-//
+// An output / controller module that displays a time on the screen in 12 - 
+// hour format given the component hour and minute numbers in 24 - hour format.
+// This is accomplished by calling upon the services of the display_hour, 
+// display_minuteand display_ampm modules described below.Five minutes after 
+// midnight(hour = 0, minute = 5) shows 12:05 a.m.Two - thirty in the afternoon
+// (hour = 14, minute = 30) shows 2 : 30 p.m. (As with the previous module, this
+// module and those it calls would be better implemented as processing modules 
+// that produce strings.)
 void display_time(int hour, int minute)
 {
-    // An output module that displays a date on the screen given the component year, month, and day numbers — 
-    // e.g., Thursday, March 18, 2021. (Note: Due to the logic involved, this module would normally be 
-    // implemented as a processing module that produces a string.Concatenation of strings and numbers in C++ 
-    // requires knowledge of “string streams”, which are out of scope for CISP 301. Including the necessary 
-    // logic in this output module to send results to the screen is a reasonable compromise, as the code could 
-    // then easily be transformed into a processing module that uses a string stream instead of the std::cout stream.)
+
+    display_hour(hour);
+    display_minute(minute);
+    display_ampm(hour);
+
     std::cout << hour << ':' << minute;
 }
 
 //
-// Describe this module...
+// An output module that displays the hour on the screen in 12 - hour 
+// format given an hour in 24 - hour format.
 //
 void display_hour(int hour)
 {
-    // An output module that displays the hour on the screen in 12 - hour format given an hour in 24 - hour format.
+    if (hour == 0) {
+        hour = 12;
+    }
+    else if (hour > 12) {
+        hour = hour - 12;
+    }
 }
 
-//
-// Describe this module...
-//
+
 void display_minute(int minute)
 {
-    // An output module that displays the given minute on the screen. Minutes are displayed with a leading zero when less than ten.
+    // An output module that displays the given minute on the screen. Minutes are 
+    // displayed with a leading zero when less than ten.
 }
 
-//
-// Describe this module...
-//
+
 void display_ampm(int hour)
 {
-    // An output module that displays “a.m.” or “p.m.” on the screen given an hour in 24 - hour format.
+    // An output module that displays “a.m.” or “p.m.” on the screen given an hour 
+    // in 24 - hour format.
+    if (hour <= 11) {
+        // a.m.
+    }
+    else {
+        // p.m.
+    }
 }
